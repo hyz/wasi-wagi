@@ -1,0 +1,11 @@
+
+[[module]]
+# Mount this to example.com/env
+route = "/env"
+# Point to the directory that 'cargo build' wrote the WASM file
+module = "./target/wasm32-wasi/release/env_wagi.wasm"
+# Mount the source code of this repo
+volumes = { "/" = "." }
+# Set an environment variable
+environment.TEST_NAME = "test value"
+
