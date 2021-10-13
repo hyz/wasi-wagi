@@ -1,3 +1,4 @@
+default_host = "localhost:3000"
 
 [[module]]
 # Mount this to example.com/env
@@ -8,4 +9,16 @@ module = "./target/wasm32-wasi/release/env_wagi.wasm"
 volumes = { "/" = "." }
 # Set an environment variable
 environment.TEST_NAME = "test value"
+
+[[module]]
+route = "/foo"
+module = "./target/wasm32-wasi/release/foo.wasm"
+volumes = { "/" = "." }
+
+[[module]]
+route = "/bar/..."
+module = "./target/wasm32-wasi/release/examples/bar.wasm"
+allowed_hosts = ["4000.local"]
+http_max_concurrency = 2
+volumes = { "/" = "." }
 
